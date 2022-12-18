@@ -3,6 +3,7 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { getCookies, setCookie } from "$std/http/cookie.ts";
 import { Button } from "../components/Button.tsx";
 import Chat from "../islands/Chat.tsx";
+import { IS_BROWSER } from "$fresh/runtime.ts";
 
 interface Data {
   name: string | undefined;
@@ -43,6 +44,7 @@ export default function Home({ data }: PageProps<Data>) {
       </Head>
       <div class="py-8 px-4 mx-auto max-w-screen-md">
         <h1 class="text-3xl font-bold">Deploy Chat demo</h1>
+        <span>{IS_BROWSER}</span>
         {data.name && (
           <>
             <p class="my-4">Welcome, {data.name}!</p>
@@ -64,6 +66,7 @@ function SignInForm() {
         placeholder="Your name"
         class="border border-gray-300 rounded px-2 py-1"
       />
+      <span>{IS_BROWSER}</span>
       <Button>
         Submit
       </Button>
